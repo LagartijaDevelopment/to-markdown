@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div v-if=fileSelectedOnHtml class="right-side">
+      <div class="right-side">
         <div class="title">Markdown Preview</div>
         <markdown-preview></markdown-preview>
       </div>

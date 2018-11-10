@@ -1,6 +1,6 @@
 <template>
-  <div id="preview" class="preview-container">
-    <h4>Aquí va el preview</h4>
+  <div class="preview-container">
+	<div id="preview"></div>
   </div>
 </template>
 
@@ -21,9 +21,10 @@
 
 <style scoped>
   .preview-container {
-    padding: 15px;
+    padding: 25px;
     background:black;
     height: 400px;
     color: white;
+    overflow-y: scroll;
   }
 </style>
