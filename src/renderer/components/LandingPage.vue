@@ -1,8 +1,8 @@
 <template>
   <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.png" alt="electron-vue">
     <main>
       <div class="left-side">
+        <!-- <img id="logo" src="~@/assets/logo.png" alt="electron-vue"> -->
         <div class="doc">
           <div class="title">Select file</div>
           <p>
@@ -11,11 +11,12 @@
           <div class="file-input">
             <input type="file" @change="onFileChange">
           </div>
-          <button @click="convert()">Convert</button><br><br>
+          <button v-if=fileSelectedOnHtml @click="showPreview()">Show Preview</button>
+          <button v-if=fileSelectedOnMd @click="downloadFile()">Download File</button>
         </div>
       </div>
 
-      <div class="right-side">
+      <div v-if=fileSelectedOnHtml class="right-side">
         <div class="title">Markdown Preview</div>
         <markdown-preview></markdown-preview>
       </div>
@@ -25,61 +26,37 @@
 
 <script>
   import MarkdownPreview from './LandingPage/MarkdownPreview'
-  import fs from 'fs'
+  import { ipcRenderer } from 'electron'
+  const marked = require('marked')
 
   export default {
     name: 'landing-page',
     data: function () {
       return {
-        fileSelected: ''
+        fileSelectedOnHtml: '',
+        fileSelectedOnMd: ''
       }
     },
     components: { MarkdownPreview },
     methods: {
       onFileChange (file) {
-        var mammoth = require('mammoth')
-        this.readFileInputEventAsDataUrl(event, (arrayBuffer) => {
-          info('entrando al callback')
-          mammoth.convertToMarkdown({buffer: arrayBuffer})
-            .then((result) => {
-              document.getElementById('preview').innerHTML = result.value
-            })
-            .done()
+        this.readFileInputEvent(event, (path) => {
+          ipcRenderer.send('convert-file', { path: path })
+          ipcRenderer.on('asynchronous-reply', (event, arg) => {
+            this.fileSelectedOnMd = arg
+            this.fileSelectedOnHtml = marked(arg, { sanitize: true })
+          })
         })
-        // var files = file.target.files || file.dataTransfer.files
-        // var reader = new FileReader()
-        // reader.onload = (e) => {
-        //   this.fileSelected = e.target.result
-        // }
-        // reader.readAsDataURL(files[0])
       },
-      readFileInputEventAsDataUrl (event, callback) {
-        console.log('si entra al readfileinput')
+      readFileInputEvent (event, callback) {
         var file = event.target.files[0]
-        var reader = new FileReader()
-        reader.onload = (loadEvent) => {
-          var arrayBuffer = loadEvent.target.result
-          console.log('imprimiendo arrayBuffer en onload', arrayBuffer)
-          callback(arrayBuffer)
-        }
-        reader.readAsDataURL(file)
+        callback(file.path)
       },
-      displayResult (result) {
-        document.getElementById('preview').innerHTML = result.value
-        // if (this.fileSelected) {
-        //   console.log(this.fileSelected)
-        //   mammoth.convertToMarkdown({ buffer: this.fileSelected })
-        //     .then((result) => {
-        //       document.getElementById('preview').innerHTML = result.value
-        //     })
-        //     .done()
-        // }
+      showPreview () {
+        window.document.getElementById('preview').innerHTML = this.fileSelectedOnHtml
       },
-      convert (file) {
-        //   console.log(this.fileSelected)
-        //   mammoth.convertToMarkdown({ buffer: this.fileSelected })
-        //     .then(this.displayResult())
-        //     .done()
+      downloadFile () {
+        ipcRenderer.send('download-file', { file: this.fileSelectedOnMd })
       }
     }
   }

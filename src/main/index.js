@@ -1,6 +1,9 @@
 'use strict'
 
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain } from 'electron'
+import fs from 'fs'
+import path from 'path'
+const mammoth = require('mammoth')
 
 /**
  * Set `__static` path to static files in production
@@ -20,7 +23,7 @@ function createWindow () {
    * Initial window options
    */
   mainWindow = new BrowserWindow({
-    height: 563,
+    height: 763,
     useContentSize: true,
     width: 1000
   })
@@ -29,6 +32,22 @@ function createWindow () {
 
   mainWindow.on('closed', () => {
     mainWindow = null
+  })
+
+  ipcMain.on('convert-file', (event, payload) => {
+    mammoth.convertToMarkdown(payload)
+      .then((result) => {
+        event.sender.send('asynchronous-reply', result.value)
+      })
+  })
+
+  ipcMain.on('download-file', (event, payload) => {
+    var d = new Date()
+    var pathToMarkdownFolder = path.join(app.getPath('desktop'), '/markdown-files')
+    if (!fs.existsSync(pathToMarkdownFolder)) {
+      fs.mkdirSync(pathToMarkdownFolder)
+    }
+    fs.writeFileSync(path.join(app.getPath('desktop'), `/markdown-files/post-${d}.md`), payload.file)
   })
 }
 

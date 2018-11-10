@@ -21,9 +21,9 @@
 
 <style scoped>
   .preview-container {
+    padding: 15px;
     background:black;
-    text-align: center;
-    height: 200px;
+    height: 400px;
     color: white;
   }
 </style>
