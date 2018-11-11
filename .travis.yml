@@ -30,12 +30,12 @@ install:
 #- export DISPLAY=':99.0'
 #- Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 - nvm install 7
-- npm install -g n
+- sudo npm install -g n
 - n latest
 - n prune
 - curl -o- -L https://yarnpkg.com/install.sh | bash
 - source ~/.bashrc
-- npm install -g xvfb-maybe
+- sudo npm install -g xvfb-maybe
 - yarn
 script:
 #- xvfb-maybe node_modules/.bin/karma start test/unit/karma.conf.js
