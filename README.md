@@ -2,6 +2,8 @@
 
 > An electron-vue project created to convert docx files to md files
 
+[![Build Status](https://travis-ci.org/LagartijaDevelopment/to-markdown.svg?branch=master)](https://travis-ci.org/LagartijaDevelopment/to-markdown)
+
 #### Build Setup
 
 ``` bash
