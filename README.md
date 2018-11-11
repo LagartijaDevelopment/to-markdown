@@ -1,6 +1,6 @@
 # to-markdown
 
-> An electron-vue project
+> An electron-vue project created to convert docx files to md files
 
 #### Build Setup
 
