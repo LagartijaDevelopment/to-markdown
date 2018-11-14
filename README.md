@@ -2,7 +2,7 @@
 
 > An electron-vue project created to convert docx files to md files
 
-[![Build Status](https://travis-ci.org/LagartijaDevelopment/to-markdown.svg?branch=master)](https://travis-ci.org/LagartijaDevelopment/to-markdown)
+[![Build Status](https://travis-ci.org/LagartijaDevelopment/to-markdown.svg?branch=master)](https://travis-ci.org/LagartijaDevelopment/to-markdown) [![Greenkeeper badge](https://badges.greenkeeper.io/LagartijaDevelopment/to-markdown.svg)](https://greenkeeper.io/)
 
 #### Build Setup
 
