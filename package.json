@@ -59,7 +59,7 @@
 	"@babel/runtime": "^7.1.5",
     "axios": "^0.18.0",
     "mammoth": "^1.4.7",
-    "marked": "^0.5.1",
+    "marked": "^0.6.0",
     "vue": "2.5.17",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
