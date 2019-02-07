@@ -13,6 +13,9 @@
           </div>
           <button v-if=fileSelectedOnHtml @click="showPreview()">Show Preview</button>
           <button v-if=fileSelectedOnMd @click="downloadFile()">Download File</button>
+          <div v-if=fileDownloaded>
+            <p>File Downloaded and Saved Correctly</p>
+          </div>
         </div>
       </div>
 
@@ -25,41 +28,45 @@
 </template>
 
 <script>
-  import MarkdownPreview from './LandingPage/MarkdownPreview'
-  import { ipcRenderer } from 'electron'
-  const marked = require('marked')
+  import MarkdownPreview from './LandingPage/MarkdownPreview';
+  import { ipcRenderer } from 'electron';
+  const marked = require('marked');
 
   export default {
     name: 'landing-page',
     data: function () {
       return {
         fileSelectedOnHtml: '',
-        fileSelectedOnMd: ''
-      }
+        fileSelectedOnMd: '',
+        fileDownloaded: false
+      };
     },
     components: { MarkdownPreview },
     methods: {
       onFileChange (file) {
         this.readFileInputEvent(event, (path) => {
-          ipcRenderer.send('convert-file', { path: path })
+          ipcRenderer.send('convert-file', { path: path });
           ipcRenderer.on('asynchronous-reply', (event, arg) => {
-            this.fileSelectedOnMd = arg
-            this.fileSelectedOnHtml = marked(arg, { sanitize: true })
-          })
-        })
+            this.fileSelectedOnMd = arg;
+            this.fileSelectedOnHtml = marked(arg, { sanitize: true });
+          });
+        });
       },
       readFileInputEvent (event, callback) {
-        var file = event.target.files[0]
-        callback(file.path)
+        var file = event.target.files[0];
+        callback(file.path);
       },
       showPreview () {
-        window.document.getElementById('preview').innerHTML = this.fileSelectedOnHtml
+        window.document.getElementById('preview').innerHTML = this.fileSelectedOnHtml;
       },
       downloadFile () {
-        ipcRenderer.send('download-file', { file: this.fileSelectedOnMd })
+		ipcRenderer.send('download-file', { file: this.fileSelectedOnMd });
+        ipcRenderer.on('file-download-success', (event, arg) => {
+          this.fileDownloaded = true;
+        });
       }
     }
-  }
+  };
 </script>
 
 <style>

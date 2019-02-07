@@ -7,7 +7,7 @@
 <script>
   export default {
     name: 'to-markdown'
-  }
+  };
 </script>
 
 <style>
