@@ -48,7 +48,8 @@
           ipcRenderer.send('convert-file', { path: path });
           ipcRenderer.on('asynchronous-reply', (event, arg) => {
             this.fileSelectedOnMd = arg;
-            this.fileSelectedOnHtml = marked(arg, { sanitize: true });
+			this.fileSelectedOnHtml = marked(arg, { sanitize: true });
+			this.fileDownloaded = false;
           });
         });
       },

@@ -1,6 +1,6 @@
 'use strict';
 
-import { app, BrowserWindow, ipcMain, ipcRenderer } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import fs from 'fs';
 import path from 'path';
 const mammoth = require('mammoth');
@@ -42,15 +42,24 @@ function createWindow () {
   });
 
   ipcMain.on('download-file', (event, payload) => {
-    var date = new Date();
-    var pathToMarkdownFolder = path.join(app.getPath('desktop'), '/markdown-files');
-    if (!fs.existsSync(pathToMarkdownFolder)) {
-      fs.mkdirSync(pathToMarkdownFolder);
-    }
-    fs.writeFile(path.join(app.getPath('desktop'), `/markdown-files/post-${date}.md`), payload.file, (err) => {
-      if (err) throw err;
-      event.sender.send('file-download-success');
-    });
+	var date = new Date();
+	dialog.showSaveDialog({
+			defaultPath: `post-${date}.md`,
+			filters: [
+				{ name: 'MD', extensions: ['md'] }
+			]
+		}, (fileName) => {
+			if (fileName === undefined) {
+				console.log('You didn\'t save the file');
+				return;
+			}
+			// fileName is a string that contains the path and filename created in the save file dialog.
+			fs.writeFile(fileName, payload.file, (err) => {
+				if (err) throw err;
+				event.sender.send('file-download-success');
+			});
+		}
+	);
   });
 }
 
