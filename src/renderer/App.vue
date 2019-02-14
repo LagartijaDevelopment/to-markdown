@@ -1,15 +1,15 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+	<v-app dark>
+		<router-view></router-view>
+	</v-app>
 </template>
 
 <script>
-  export default {
-    name: 'to-markdown'
-  };
+	export default {
+		name: 'to-markdown'
+	};
 </script>
 
 <style>
-  /* CSS */
+	/* CSS */
 </style>

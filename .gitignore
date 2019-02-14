@@ -1,4 +1,4 @@
-.DS_Store
+.DS_STORE
 dist/electron/*
 dist/web/*
 build/*
@@ -9,3 +9,4 @@ npm-debug.log
 npm-debug.log.*
 thumbs.db
 !.gitkeep
+build/icons/.DS_STORE

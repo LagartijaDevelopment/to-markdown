@@ -23,7 +23,7 @@
   },
   "build": {
     "productName": "to-markdown",
-    "appId": "com.example.yourapp",
+    "appId": "com.example.tomarkdown",
     "directories": {
       "output": "build"
     },
@@ -46,35 +46,37 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icons/launcher-icon.icns"
     },
     "win": {
-      "icon": "build/icons/icon.ico"
+      "icon": "build/icons/launcher-icon.ico"
     },
     "linux": {
       "icon": "build/icons"
     }
   },
   "dependencies": {
-	"@babel/runtime": "^7.1.5",
+    "@babel/runtime": "^7.1.5",
     "axios": "^0.18.0",
     "mammoth": "^1.4.7",
     "marked": "^0.6.0",
-    "vue": "2.5.17",
+    "material-design-icons-iconfont": "^4.0.4",
+    "vue": "2.5.18",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.1",
+    "vuetify": "^1.5.0",
     "vuex": "^3.0.1",
     "vuex-electron": "^1.0.0"
   },
   "devDependencies": {
-    "ajv": "^6.5.0",
     "@babel/core": "^7.1.6",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-istanbul": "^5.1.0",
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-stage-0": "^7.0.0",
+    "ajv": "^6.5.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-istanbul": "^5.1.0",
     "babel-register": "^6.26.0",
     "babili-webpack-plugin": "^0.1.2",
     "cfonts": "^2.1.2",
@@ -123,7 +125,7 @@
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.2.4",
     "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "2.5.17",
+    "vue-template-compiler": "2.5.18",
     "webpack": "4.28.3",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
