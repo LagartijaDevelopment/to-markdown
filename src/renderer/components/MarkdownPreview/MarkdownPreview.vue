@@ -20,5 +20,6 @@
 		height: 400px;
 		color: white;
 		overflow-y: scroll;
+		text-align: justify;
 	}
 </style>
