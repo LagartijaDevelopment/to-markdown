@@ -2,8 +2,8 @@
 
 import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import fs from 'fs';
-import path from 'path';
 const mammoth = require('mammoth');
+const path = require('path');
 
 /**
  * Set `__static` path to static files in production
@@ -25,7 +25,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     height: 763,
     useContentSize: true,
-    width: 1000
+	width: 1000,
+	icon: path.join(__dirname, 'assets/web/icons/launcher-icon-72.png')
   });
 
   mainWindow.loadURL(winURL);
