@@ -67,9 +67,6 @@
 			readFileInputEvent(file, callback) {
 				callback(file.path);
 			},
-			showPreview() {
-				window.document.getElementById('preview').innerHTML = this.fileSelectedOnHtml;
-			},
 			downloadFile() {
 				ipcRenderer.send('download-file', {
 					file: this.fileSelectedOnMd
