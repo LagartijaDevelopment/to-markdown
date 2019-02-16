@@ -24,7 +24,7 @@
   },
   "build": {
     "productName": "to-markdown",
-    "appId": "com.application.tomarkdown",
+    "appId": "com.example.tomarkdown",
     "directories": {
       "output": "build"
     },
