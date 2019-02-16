@@ -2,9 +2,10 @@
   "name": "to-markdown",
   "version": "0.0.1",
   "author": "Pablodotjs <luis.pablo.lopez.lopez@uabc.edu.mx>",
-  "description": "An electron-vue project",
+  "description": "An electron application to convert docx files to markdown files",
   "license": "UNLICENSED",
   "main": "./dist/electron/main.js",
+  "repository": "https://github.com/LagartijaDevelopment/to-markdown",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
@@ -23,7 +24,7 @@
   },
   "build": {
     "productName": "to-markdown",
-    "appId": "com.example.tomarkdown",
+    "appId": "com.application.tomarkdown",
     "directories": {
       "output": "build"
     },

@@ -1,10 +1,22 @@
-# to-markdown
+<p align="center">
+	<img width="220" src="./logo-tmd.png">
+</p>
 
-> An electron-vue project created to convert docx files to md files
+<p align="center">
+	<a href="https://travis-ci.org/LagartijaDevelopment/to-markdown">
+		<img src="https://travis-ci.org/LagartijaDevelopment/to-markdown.svg?branch=master" alt="to markdown travis ci badge">
+	</a>
+	<a href="https://greenkeeper.io/">
+		<img src="https://badges.greenkeeper.io/LagartijaDevelopment/to-markdown.svg">
+	</a>
+	<a href="https://snyk.io/test/github/LagartijaDevelopment/to-markdown?targetFile=package.json">
+		<img src="https://snyk.io/test/github/LagartijaDevelopment/to-markdown/badge.svg?targetFile=package.json">
+	</a>
+</p>
 
-[![Build Status](https://travis-ci.org/LagartijaDevelopment/to-markdown.svg?branch=master)](https://travis-ci.org/LagartijaDevelopment/to-markdown) 
-[![Greenkeeper badge](https://badges.greenkeeper.io/LagartijaDevelopment/to-markdown.svg)](https://greenkeeper.io/)
-[![Known Vulnerabilities](https://snyk.io/test/github/LagartijaDevelopment/to-markdown/badge.svg?targetFile=package.json)](https://snyk.io/test/github/LagartijaDevelopment/to-markdown?targetFile=package.json)
+#### Description
+Simple Electron application to convert docx files to markdown format
+
 
 #### Build Setup
 
