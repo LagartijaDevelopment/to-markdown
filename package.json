@@ -5,7 +5,6 @@
   "description": "An electron application to convert docx files to markdown files",
   "license": "UNLICENSED",
   "main": "./dist/electron/main.js",
-  "repository": "https://github.com/LagartijaDevelopment/to-markdown",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",
     "build:dir": "node .electron-vue/build.js && electron-builder --dir",
