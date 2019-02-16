@@ -26,7 +26,8 @@ function createWindow () {
     height: 763,
     useContentSize: true,
 	width: 1000,
-	icon: path.join(__dirname, 'assets/web/icons/launcher-icon-72.png')
+	icon: path.join(__dirname, 'assets/web/icons/launcher-icon-72.png'),
+	webPreferences: { nodeIntegration: true }
   });
 
   mainWindow.loadURL(winURL);

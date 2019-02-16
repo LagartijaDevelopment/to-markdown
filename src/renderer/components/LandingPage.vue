@@ -13,7 +13,14 @@
 							</v-flex>
 						</v-layout>
 					</v-container>
+
+					<!-- Elements of file history -->
+					<v-container v-if="fileHistory.length > 0">
+						<files-list :files="fileHistory" @file-selected="convertFile"></files-list>
+					</v-container>
 				</div>
+
+				<!-- Elements when a file has been selected or uploaded -->
 				<div v-if="fileSelectedOnHtml && fileSelectedOnMd">
 					<v-btn color="info" @click="downloadFile()">Download File</v-btn>
 					<v-btn color="warning" @click="uploadNewFile()">New File</v-btn>
@@ -31,6 +38,7 @@
 <script>
 	import MarkdownPreview from './MarkdownPreview/MarkdownPreview';
 	import FileInput from './FileInput/FileInput';
+	import FilesList from './FilesList/FilesList';
 	import {
 		ipcRenderer
 	} from 'electron';
@@ -38,20 +46,18 @@
 	
 	export default {
 		name: 'landing-page',
+		components: {
+			MarkdownPreview,
+			FileInput,
+			FilesList
+		},
 		data: function() {
 			return {
 				fileSelectedOnHtml: '',
 				fileSelectedOnMd: '',
-				fileDownloaded: false
-			};
-		},
-		components: {
-			MarkdownPreview,
-			FileInput
-		},
-		methods: {
-			onFileUpload(file) {
-				this.readFileInputEvent(file, (path) => {
+				fileDownloaded: false,
+				fileHistory: [],
+				convertFile: (path) => {
 					ipcRenderer.send('convert-file', {
 						path: path
 					});
@@ -62,9 +68,18 @@
 						});
 						this.fileDownloaded = false;
 					});
-				});
+				}
+			};
+		},
+		methods: {
+			onFileUpload(file) {
+				this.readFileInputEvent(file, this.convertFile);
 			},
 			readFileInputEvent(file, callback) {
+				this.fileHistory.push({
+					name: file.name,
+					path: file.path
+				});
 				callback(file.path);
 			},
 			downloadFile() {
