@@ -2,9 +2,11 @@
 	<div id="wrapper">
 		<main>
 			<v-container text-xs-center>
-				<img id="logo" src="~@/assets/tm-logo-white.png" alt="lagartija development logo">
+				<img v-if="darkTheme" class="logo" id="white-logo" src="~@/assets/tm-logo-white.png" alt="lagartija development logo">
+				<img v-else class="logo" id="black-logo" src="~@/assets/tm-logo-black.png" alt="lagartija development black logo">
+
 				<div v-if="!fileSelectedOnHtml && !fileSelectedOnMd">
-					<h2>Select file</h2>
+					<h2 class="select-title">Select file</h2>
 					<p>We expect to convert docx files to markdown files to make easy blog posts.</p>
 					<v-container>
 						<v-layout align-center justify-center>
@@ -46,6 +48,9 @@
 	
 	export default {
 		name: 'landing-page',
+		props: {
+			darkTheme: Boolean
+		},
 		components: {
 			MarkdownPreview,
 			FileInput,
@@ -111,7 +116,7 @@
 		font-family: 'Source Sans Pro', sans-serif;
 	}
 	
-	#logo {
+	.logo {
 		height: auto;
 		margin-bottom: 20px;
 		width: 220px;
