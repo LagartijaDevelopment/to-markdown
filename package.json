@@ -19,8 +19,10 @@
     "pack:renderer": "cross-env NODE_ENV=production webpack --progress --colors --config .electron-vue/webpack.renderer.config.js",
     "test": "npm run unit && npm run e2e",
     "unit": "karma start test/unit/karma.conf.js && yarn coverage",
-	"postinstall": "npm run lint:fix",
-	"coverage": "open ./test/unit/coverage/lcov-report/index.html"
+    "postinstall": "npm run lint:fix",
+    "coverage": "open ./test/unit/coverage/lcov-report/index.html",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "build": {
     "productName": "to-markdown",
@@ -67,10 +69,11 @@
     "vue-router": "^3.0.2",
     "vuetify": "^1.5.1",
     "vuex": "^3.1.0",
-    "vuex-electron": "^1.0.3"
+    "vuex-electron": "^1.0.3",
+    "snyk": "^1.163.0"
   },
   "devDependencies": {
-	"@babel/core": "^7.3.3",
+    "@babel/core": "^7.3.3",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-stage-0": "^7.0.0",
@@ -132,5 +135,6 @@
     "webpack-dev-server": "^3.1.14",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1"
-  }
+  },
+  "snyk": true
 }
