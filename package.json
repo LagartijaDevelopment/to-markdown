@@ -90,7 +90,7 @@
     "devtron": "^1.4.0",
     "electron": "4.0.5",
     "electron-builder": "^20.38.5",
-    "electron-debug": "^2.1.0",
+    "electron-debug": "^3.0.0",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^5.14.0",
     "eslint-config-standard": "^12.0.0",
