@@ -122,7 +122,7 @@
     "sass-loader": "^7.1.0",
     "spectron": "^6.0.0",
     "style-loader": "^0.23.1",
-    "url-loader": "^2.0.0",
+    "url-loader": "^2.2.0",
     "vue-html-loader": "^1.2.4",
     "vue-loader": "^15.6.3",
     "vue-style-loader": "^4.1.2",
