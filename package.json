@@ -92,7 +92,7 @@
     "del": "^4.0.0",
     "devtron": "^1.4.0",
     "electron": "4.0.6",
-    "electron-builder": "^20.38.5",
+    "electron-builder": "^22.1.0",
     "electron-debug": "^3.0.0",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^6.0.0",
