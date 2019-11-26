@@ -122,7 +122,7 @@
     "node-loader": "^0.6.0",
     "node-sass": "^4.11.0",
     "require-dir": "^1.2.0",
-    "sass-loader": "^7.1.0",
+    "sass-loader": "^8.0.0",
     "spectron": "^6.0.0",
     "style-loader": "^0.23.1",
     "url-loader": "^2.0.0",
