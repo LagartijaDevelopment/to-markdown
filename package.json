@@ -64,7 +64,7 @@
     "mammoth": "^1.4.7",
     "marked": "^0.7.0",
     "material-design-icons-iconfont": "^5.0.1",
-    "vue": "2.6.6",
+    "vue": "3.0.0",
     "vue-electron": "^1.0.6",
     "vue-router": "^3.0.2",
     "vuetify": "^1.5.1",
